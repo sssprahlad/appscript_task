@@ -4,12 +4,21 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addToCart, favouriteItems } from "../../redux/reducer/user";
+import {
+  addToCart,
+  favouriteItems,
+  removeFromFavourite,
+} from "../../redux/reducer/user";
+import { useSelector } from "react-redux";
 
 const ProductCard = ({ product }) => {
   const [quantity, setQunatity] = useState(1);
+  const { favList } = useSelector((state) => state.user);
+  console.log(favList, "fav list");
 
   const dispatch = useDispatch();
+
+  const isFavourite = favList.some((fav) => fav.id === product.id);
 
   // console.log(product, "product");
 
@@ -31,8 +40,12 @@ const ProductCard = ({ product }) => {
   };
 
   const handleFavouriteItem = (product) => {
-    alert(`${product.title} added to Favourite!`);
-    dispatch(favouriteItems(product));
+    if (isFavourite) {
+      dispatch(removeFromFavourite(product.id));
+    } else {
+      alert(`${product.title} added to Favourite!`);
+      dispatch(favouriteItems(product));
+    }
   };
 
   return (
@@ -74,7 +87,11 @@ const ProductCard = ({ product }) => {
           className="fav-button"
           onClick={() => handleFavouriteItem(product)}
         >
-          <MdFavoriteBorder className="fav-icon" />
+          {isFavourite ? (
+            <MdFavorite className="fav-icon red" style={{ color: "red" }} />
+          ) : (
+            <MdFavoriteBorder className="fav-icon" />
+          )}
         </button>
       </div>
     </div>

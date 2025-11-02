@@ -67,7 +67,7 @@ const Cart = () => {
 
               <div style={{ width: "100%" }}>
                 <div className="quantity-delete-button-container">
-                  <div className="quantity-container">
+                  <div className="cart-quantity-container">
                     {/* <button
                       className="quantity-btn"
                       onClick={() => setQunatity(quantity - 1)}
