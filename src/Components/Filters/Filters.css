@@ -1,0 +1,31 @@
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  /* background: blue; */
+  padding: 1rem;
+  /* gap: 1rem; */
+}
+
+.each-filter {
+  margin: 0.3rem 0rem;
+  cursor: pointer;
+}
+
+.each-filter p {
+  color: oklch(0.714 0.203 305.504);
+  padding: 0.5rem 0.5rem;
+}
+.each-filter p:hover {
+  color: #fff;
+  background: #1a1a2e;
+  padding: 0.5rem 0.5rem;
+  border-radius: 4px;
+}
+.active-filter {
+  background: #1a1a2e;
+  border-radius: 4px;
+  color: #fff !important;
+}
+.active-color {
+  color: #fff !important;
+}
