@@ -1,10 +1,10 @@
-# Getting Started with Create React App
+# my project installed dependencies
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 1. `npm install`
 
-## Available Scripts
+### 2. for redux, router, recat-icons
 
-In the project directory, you can run:
+        `npm install @reduxjs/toolkit @testing-library/dom @testing-library/jest-dom @testing-library/react @testing-library/user-event react react-dom react-icons react-redux react-router-dom react-scripts redux redux-persist redux-thunk web-vitals`
 
 ### `npm start`
 
