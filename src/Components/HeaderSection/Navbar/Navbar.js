@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { IoSearch } from "react-icons/io5";
 import { GrFavorite } from "react-icons/gr";
@@ -8,12 +8,17 @@ import { BsCart2 } from "react-icons/bs";
 import { IoMdContact } from "react-icons/io";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <div className="navbar-main-container">
       <div className="center-containe pl">
         <div className="nav-bg-color">
           <div className="logo-container">
-            <img src="/Images/Logo.svg" alt="logo" />
+            <img
+              src="/Images/Logo.svg"
+              alt="logo"
+              onClick={() => navigate("/")}
+            />
             <h2>Logo</h2>
             <div className="cart-fav-container">
               <IoSearch />

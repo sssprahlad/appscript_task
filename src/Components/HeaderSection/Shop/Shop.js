@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Shop.css";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import ProductCard from "../../ProductCard/ProductCard";
@@ -9,7 +9,7 @@ const Shop = () => {
   const [products, setProducts] = useState([]);
   const [categoriesFilter, setCategoriesFilter] = useState();
   const [filterData, setFilterData] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   const { cartList } = useSelector((state) => state.user);
   console.log(cartList, "cartlist");
 
@@ -30,6 +30,7 @@ const Shop = () => {
       if (response.status === 200) {
         const data = await response.json();
         setProducts(data);
+        setLoading(false);
       } else {
         console.log(response);
       }
@@ -58,6 +59,10 @@ const Shop = () => {
       setFilterData(products);
     }
   }, [categoriesFilter, products]);
+
+  // if (loading) {
+  //   return <div className="spinner"> </div>;
+  // }
 
   return (
     <div className="center-container">
@@ -94,12 +99,20 @@ const Shop = () => {
             />
           </div>
 
-          <div className="products-container">
-            {filterData?.map((eachProduct) => (
-              <div key={eachProduct.id}>
-                <ProductCard product={eachProduct} />
-              </div>
-            ))}
+          <div
+            className={
+              loading ? "loader-center-container" : "products-container"
+            }
+          >
+            {loading ? (
+              <div className="spinner"> </div>
+            ) : (
+              filterData?.map((eachProduct) => (
+                <div key={eachProduct.id}>
+                  <ProductCard product={eachProduct} />
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>

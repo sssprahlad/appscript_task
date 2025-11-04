@@ -44,7 +44,16 @@ const ProductCard = ({ product }) => {
       dispatch(removeFromFavourite(product.id));
     } else {
       alert(`${product.title} added to Favourite!`);
-      dispatch(favouriteItems(product));
+
+      const cartData = {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.image,
+        quantity: quantity,
+        rating: product.rating.rate,
+      };
+      dispatch(favouriteItems(cartData));
     }
   };
 

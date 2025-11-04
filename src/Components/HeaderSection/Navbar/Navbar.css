@@ -16,6 +16,7 @@
   align-items: center;
   width: 100%;
   padding: 1.5rem 0rem;
+  cursor: pointer;
   /* background: plum; */
 }
 .cart-fav-container {
